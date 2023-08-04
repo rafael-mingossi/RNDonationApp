@@ -1,14 +1,15 @@
 import React, {FC} from 'react';
-import {Text} from 'react-native';
+import Navigator from './config/Navigator';
+import {NavigationContainer} from '@react-navigation/native';
 
 import 'react-native-gesture-handler';
 
 const App: FC = () => {
   return (
     <>
-      <Text>1</Text>
-      <Text>2</Text>
-      <Text>32</Text>
+      <NavigationContainer>
+        <Navigator />
+      </NavigationContainer>
     </>
   );
 };

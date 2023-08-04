@@ -2,20 +2,19 @@ import {StyleSheet} from 'react-native';
 import {scaleFontSize} from '../../utils/scalling';
 
 const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
-  headerIcon: {
-    height: 50,
-    width: 50,
-  },
-  hello: {
+  title: {
     fontFamily: 'Inter',
+    fontWeight: '600',
+  },
+  sm: {
     fontSize: scaleFontSize(16),
-    fontWeight: '400',
-    color: '#636776',
+  },
+  md: {
+    fontSize: scaleFontSize(18),
+  },
+  lg: {
+    fontSize: scaleFontSize(24),
+    letterSpacing: scaleFontSize(0.48),
   },
 });
 
