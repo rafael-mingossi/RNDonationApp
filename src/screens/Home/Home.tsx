@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
-import {Text, View, SafeAreaView, Image} from 'react-native';
-import {Header, Button} from '../../components';
+import {Text, View, SafeAreaView, Image, Alert} from 'react-native';
+import {Header, Button, Tab} from '../../components';
 import styles from './home.styles';
 import globalStyles from '../../../assets/styles/globalStyles';
 
@@ -18,7 +18,15 @@ const Home: FC = () => {
             style={styles.headerIcon}
           />
         </View>
-        <Button />
+        <Tab />
+        <Button
+          onPress={() => Alert.alert('d')}
+          sizeBtn={'lg'}
+          sizeTxt={'lg'}
+          text={'Donate'}
+          isDisabled={false}
+          isActive={true}
+        />
       </View>
     </SafeAreaView>
   );
