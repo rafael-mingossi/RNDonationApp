@@ -15,8 +15,8 @@ const Tab: FC = () => {
         contentContainerStyle={styles.buttonsWrapper}
         horizontal={true}
         showsHorizontalScrollIndicator={false}>
-        {categories.map(label => (
-          <View style={styles.buttonWrapper}>
+        {categories.map((label, index) => (
+          <View style={styles.buttonWrapper} key={index}>
             <Button
               onPress={() =>
                 current === label ? setCurrent('') : setCurrent(label)

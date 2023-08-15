@@ -6,26 +6,35 @@ import {horizontalScale} from '../../utils/scalling';
 interface ButtonProps extends PressableProps {
   sizeBtn: 'sm' | 'md' | 'lg';
   sizeTxt: 'sm' | 'md' | 'lg';
-  text?: string;
+  text: string;
   isDisabled?: boolean;
   isActive?: boolean;
   smallWidth?: boolean;
 }
 
-const Button: FC<ButtonProps> = ({
-  sizeBtn,
-  sizeTxt,
-  text,
-  isDisabled,
-  isActive,
-  smallWidth,
-  ...rest
-}) => {
+const defaultProps = {
+  sizeBtn: 'md',
+  sizeTxt: 'md',
+  text: 'Default',
+  isDisabled: false,
+  isActive: true,
+  smallWidth: false,
+};
+
+const Button: FC<ButtonProps> = props => {
   const [width, setWidth] = useState(0);
   const txtRef = useRef(null);
   const paddingHorizontal = 33;
   //THIS WILL GRAB THE ACTUAL TEXT BTN WIDTH
   const btnWidth = {width: horizontalScale(paddingHorizontal * 2 + width)};
+
+  const propsWithDefault = {
+    ...defaultProps,
+    ...props,
+  };
+
+  const {sizeBtn, sizeTxt, text, isDisabled, isActive, smallWidth, ...rest} =
+    propsWithDefault;
 
   const btnSizes = {
     sm: styles.sm,

@@ -1,10 +1,13 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import {Text, View, SafeAreaView, Image, Alert} from 'react-native';
-import {Header, Button, Tab} from '../../components';
+import {Header, Button, Tab, Badge, Search} from '../../components';
 import styles from './home.styles';
 import globalStyles from '../../../assets/styles/globalStyles';
 
 const Home: FC = () => {
+  const [s, setS] = useState('');
+
+  console.log(s);
   return (
     <SafeAreaView style={[globalStyles.backgroundWhite, globalStyles.flex]}>
       <View style={[globalStyles.paddings]}>
@@ -18,15 +21,18 @@ const Home: FC = () => {
             style={styles.headerIcon}
           />
         </View>
+        <Search onSearch={val => setS(val)} />
         <Tab />
         <Button
           onPress={() => Alert.alert('d')}
           sizeBtn={'lg'}
           sizeTxt={'lg'}
           text={'Donate'}
-          isDisabled={false}
-          isActive={true}
         />
+
+        <Badge sizeBtn={'md'} sizeTxt={'md'} text={'Environment'} />
+        <Badge sizeBtn={'sm'} sizeTxt={'sm'} text={'Education'} />
+        <Badge sizeBtn={'sm'} sizeTxt={'sm'} text={'Sports'} />
       </View>
     </SafeAreaView>
   );
