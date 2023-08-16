@@ -17,6 +17,10 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     color: '#636776',
   },
+  singleDonationWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
 });
 
 export default styles;

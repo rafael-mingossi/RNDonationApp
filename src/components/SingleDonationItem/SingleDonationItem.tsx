@@ -1,18 +1,45 @@
 import React, {FC} from 'react';
-import {Text, View} from 'react-native';
+import {View, Image} from 'react-native';
+import {Badge, Header} from '../index';
 import styles from './singleDonationItem.styles';
 
 interface SingleDonationItemProps {
-  uri: string;
+  // uri: string;
   badgeTitle: string;
   donationTitle: string;
   price: number;
 }
 
-const SingleDonationItem: FC<SingleDonationItemProps> = () => {
+const SingleDonationItem: FC<SingleDonationItemProps> = ({
+  // uri,
+  badgeTitle,
+  donationTitle,
+  price,
+}) => {
   return (
     <View style={styles.container}>
-      <Text>Donation</Text>
+      <View style={styles.imgWrapper}>
+        <Image
+          source={require('../../../assets/images/environment.jpeg')}
+          style={styles.image}
+        />
+        <Badge
+          sizeBtn={'sm'}
+          sizeTxt={'sm'}
+          text={badgeTitle}
+          customStyle={styles.badgeStyles}
+        />
+      </View>
+      <Header
+        size={'sm'}
+        text={donationTitle}
+        customStyle={styles.headerGreen}
+      />
+      <Header
+        size={'sm'}
+        text={'$' + price.toFixed(2)}
+        customStyle={styles.headerBlue}
+      />
     </View>
   );
 };

@@ -11,8 +11,8 @@ const globalStyles = StyleSheet.create({
   paddings: {
     paddingTop: verticalScale(20),
     paddingBottom: verticalScale(20),
-    paddingLeft: horizontalScale(24),
-    paddingRight: horizontalScale(24),
+    paddingLeft: horizontalScale(20),
+    paddingRight: horizontalScale(20),
   },
 });
 

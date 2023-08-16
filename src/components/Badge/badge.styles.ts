@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
   },
   sm: {height: verticalScale(22)},
   md: {height: verticalScale(27)},
-  smTxt: {fontSize: scaleFontSize(14)},
-  mdTxt: {fontSize: scaleFontSize(16)},
+  smTxt: {fontSize: scaleFontSize(10)},
+  mdTxt: {fontSize: scaleFontSize(14)},
 });
 
 export default styles;

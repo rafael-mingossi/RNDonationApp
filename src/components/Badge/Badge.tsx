@@ -1,5 +1,5 @@
 import React, {FC, useRef, useState} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, ViewStyle} from 'react-native';
 import {horizontalScale} from '../../utils/scalling';
 import styles from './badge.styles';
 
@@ -7,6 +7,7 @@ interface BadgeProps {
   sizeBtn: 'sm' | 'md';
   sizeTxt: 'sm' | 'md';
   text: string;
+  customStyle?: ViewStyle;
 }
 
 const defaultProps = {
@@ -26,7 +27,7 @@ const Badge: FC<BadgeProps> = props => {
     ...props,
   };
 
-  const {sizeBtn, sizeTxt, text} = propsWithDefault;
+  const {sizeBtn, sizeTxt, text, customStyle} = propsWithDefault;
 
   const btnSizes = {
     sm: styles.sm,
@@ -39,7 +40,7 @@ const Badge: FC<BadgeProps> = props => {
   };
 
   return (
-    <View style={[styles.container, btnWidth, btnSizes[sizeBtn]]}>
+    <View style={[styles.container, btnWidth, btnSizes[sizeBtn], customStyle]}>
       <Text
         onTextLayout={event => setWidth(event.nativeEvent.lines[0].width)}
         style={[styles.text, txtSizes[sizeTxt]]}
