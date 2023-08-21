@@ -1,17 +1,28 @@
-import React, {FC, useState} from 'react';
-import {Text, View, SafeAreaView, Image} from 'react-native';
+import React, {FC} from 'react';
+import {
+  Text,
+  View,
+  SafeAreaView,
+  Image,
+  Pressable,
+  ScrollView,
+  Alert,
+} from 'react-native';
 import {Header, Tab, Search, SingleDonationItem} from '../../components';
 import styles from './home.styles';
 import globalStyles from '../../../assets/styles/globalStyles';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {RootState} from '../../../redux/store';
+import {updateFirstName} from '../../../redux/reducers/User';
 
 const Home: FC = () => {
   const user = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch();
+  // dispatch(resetToInitialState());
   return (
     <SafeAreaView style={[globalStyles.backgroundWhite, globalStyles.flex]}>
-      <View style={[globalStyles.paddings, globalStyles.flex]}>
-        <View style={[styles.container]}>
+      <ScrollView style={[globalStyles.paddings, globalStyles.flex]}>
+        <View style={[styles.headerContainer]}>
           <View>
             <Text style={styles.hello}>Hello,</Text>
             <Header
@@ -22,14 +33,24 @@ const Home: FC = () => {
                   : 'Stranger' + '👋'
               }
             />
-            {/*<Header size={'lg'} text={'Raf M.👋'} />*/}
           </View>
           <Image
-            source={require('../../../assets/images/headerIcon.png')}
-            style={styles.headerIcon}
+            source={{uri: user.profileImage}}
+            // source={require('../../../assets/images/headerIcon.png')}
+            style={styles.headerImage}
           />
         </View>
-        <Search onSearch={val => console.log(val)} />
+        <View style={styles.searchContainer}>
+          <Search onSearch={val => console.log(val)} />
+        </View>
+        <Pressable
+          style={styles.highlightContainer}
+          onPress={() => Alert.alert('PRESS')}>
+          <Image
+            source={require('../../../assets/images/highlighted_image.png')}
+            style={styles.highlighted}
+          />
+        </Pressable>
         <Tab />
         {/*<Button*/}
         {/*  onPress={() => Alert.alert('d')}*/}
@@ -51,7 +72,19 @@ const Home: FC = () => {
             price={44}
           />
         </View>
-      </View>
+        <Pressable
+          onPress={() => dispatch(updateFirstName({firstName: 'Rafael'}))}>
+          <Text>PRESS ME!!!</Text>
+        </Pressable>
+        <Pressable
+          onPress={() => dispatch(updateFirstName({firstName: 'Rafael'}))}>
+          <Text>PRESS ME!!!</Text>
+        </Pressable>
+        <Pressable
+          onPress={() => dispatch(updateFirstName({firstName: 'Rafael'}))}>
+          <Text>PRESS ME!!!</Text>
+        </Pressable>
+      </ScrollView>
     </SafeAreaView>
   );
 };

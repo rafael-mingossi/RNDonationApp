@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
     marginTop: verticalScale(10),
   },
   buttonWrapper: {
-    // width: horizontalScale(134),
     marginRight: horizontalScale(10),
   },
 });

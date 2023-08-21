@@ -7,6 +7,7 @@ import {scaleFontSize} from '../../utils/scalling';
 
 interface SearchProps {
   onSearch: (searchValue: string) => void;
+  placeHolder?: string;
 }
 
 // MAYBE MOVE THE STATE CONTROL OUT OF THIS COMPONENT
@@ -34,7 +35,7 @@ const Search: FC<SearchProps> = props => {
         style={styles.icon}
       />
       <TextInput
-        placeholder={'Search'}
+        placeholder={props.placeHolder || 'Search'}
         style={styles.input}
         ref={inputRef}
         value={search}

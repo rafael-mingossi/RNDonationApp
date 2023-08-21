@@ -11,7 +11,6 @@ const styles = StyleSheet.create({
     borderRadius: horizontalScale(15),
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: verticalScale(20),
     height: verticalScale(50),
     paddingHorizontal: horizontalScale(14),
   },
