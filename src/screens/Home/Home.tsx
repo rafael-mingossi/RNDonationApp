@@ -11,14 +11,15 @@ import {
 import {Header, Tab, Search, SingleDonationItem} from '../../components';
 import styles from './home.styles';
 import globalStyles from '../../../assets/styles/globalStyles';
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {RootState} from '../../../redux/store';
-import {updateFirstName} from '../../../redux/reducers/User';
 
 const Home: FC = () => {
   const user = useSelector((state: RootState) => state.user);
-  const dispatch = useDispatch();
+  const donations = useSelector((state: RootState) => state.donations);
+  // const dispatch = useDispatch();
   // dispatch(resetToInitialState());
+  console.log(donations);
   return (
     <SafeAreaView style={[globalStyles.backgroundWhite, globalStyles.flex]}>
       <ScrollView style={[globalStyles.paddings, globalStyles.flex]}>
@@ -72,18 +73,6 @@ const Home: FC = () => {
             price={44}
           />
         </View>
-        <Pressable
-          onPress={() => dispatch(updateFirstName({firstName: 'Rafael'}))}>
-          <Text>PRESS ME!!!</Text>
-        </Pressable>
-        <Pressable
-          onPress={() => dispatch(updateFirstName({firstName: 'Rafael'}))}>
-          <Text>PRESS ME!!!</Text>
-        </Pressable>
-        <Pressable
-          onPress={() => dispatch(updateFirstName({firstName: 'Rafael'}))}>
-          <Text>PRESS ME!!!</Text>
-        </Pressable>
       </ScrollView>
     </SafeAreaView>
   );
