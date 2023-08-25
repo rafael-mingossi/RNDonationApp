@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useState, useEffect} from 'react';
 import {
   Text,
   View,
@@ -14,12 +14,32 @@ import globalStyles from '../../../assets/styles/globalStyles';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../../redux/store';
 
+type DonationsType = {
+  name: string;
+  description: string;
+  image: string;
+  donationItemId: number;
+  categoryIds: Array<number>;
+  price: string;
+};
+
 const Home: FC = () => {
   const user = useSelector((state: RootState) => state.user);
+  const cat = useSelector((state: RootState) => state.categories);
   const donations = useSelector((state: RootState) => state.donations);
-  // const dispatch = useDispatch();
-  // dispatch(resetToInitialState());
-  console.log(donations);
+
+  const [donationItems, setDonationItems] = useState<DonationsType[]>([]);
+
+  useEffect(() => {
+    const items = donations.items.filter(val => {
+      return (
+        cat.selectedCategoryId &&
+        val.categoryIds.includes(cat.selectedCategoryId)
+      );
+    });
+    setDonationItems(items);
+  }, [cat.selectedCategoryId]);
+
   return (
     <SafeAreaView style={[globalStyles.backgroundWhite, globalStyles.flex]}>
       <ScrollView style={[globalStyles.paddings, globalStyles.flex]}>
@@ -59,20 +79,22 @@ const Home: FC = () => {
         {/*  sizeTxt={'lg'}*/}
         {/*  text={'Donate'}*/}
         {/*/>*/}
-        <View style={styles.singleDonationWrapper}>
-          <SingleDonationItem
-            // uri={'../../../assets/images/environment.jpeg'}
-            badgeTitle={'Environment'}
-            donationTitle={'Solitary Island Pic'}
-            price={44}
-          />
-          <SingleDonationItem
-            // uri={'../../../assets/images/environment.jpeg'}
-            badgeTitle={'Environment'}
-            donationTitle={'Solitary Island Pic'}
-            price={44}
-          />
-        </View>
+        {donationItems.length > 0 && (
+          <View style={styles.singleDonationWrapper}>
+            {donationItems.map(val => (
+              <SingleDonationItem
+                uri={val.image}
+                badgeTitle={
+                  cat.categories.filter(
+                    res => res.categoryId === cat.selectedCategoryId,
+                  )[0].name
+                }
+                donationTitle={val.name}
+                price={parseFloat(val.price)}
+              />
+            ))}
+          </View>
+        )}
       </ScrollView>
     </SafeAreaView>
   );

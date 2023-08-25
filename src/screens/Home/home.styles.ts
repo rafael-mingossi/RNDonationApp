@@ -24,6 +24,8 @@ const styles = StyleSheet.create({
   singleDonationWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    flexWrap: 'wrap',
+    marginBottom: 20,
   },
   searchContainer: {
     marginVertical: verticalScale(15),

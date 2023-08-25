@@ -8,7 +8,8 @@ import {
 const styles = StyleSheet.create({
   container: {
     width: horizontalScale(145),
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
+    marginBottom: 15,
   },
   imgWrapper: {
     height: verticalScale(160),

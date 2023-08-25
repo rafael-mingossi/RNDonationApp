@@ -4,14 +4,14 @@ import {Badge, Header} from '../index';
 import styles from './singleDonationItem.styles';
 
 interface SingleDonationItemProps {
-  // uri: string;
+  uri: string;
   badgeTitle: string;
   donationTitle: string;
   price: number;
 }
 
 const SingleDonationItem: FC<SingleDonationItemProps> = ({
-  // uri,
+  uri,
   badgeTitle,
   donationTitle,
   price,
@@ -20,7 +20,8 @@ const SingleDonationItem: FC<SingleDonationItemProps> = ({
     <View style={styles.container}>
       <View style={styles.imgWrapper}>
         <Image
-          source={require('../../../assets/images/environment.jpeg')}
+          source={{uri: uri}}
+          // source={require('../../../assets/images/environment.jpeg')}
           style={styles.image}
         />
         <Badge
