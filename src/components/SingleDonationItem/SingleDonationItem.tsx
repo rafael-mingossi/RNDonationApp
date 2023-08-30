@@ -1,9 +1,9 @@
 import React, {FC} from 'react';
-import {View, Image} from 'react-native';
+import {View, Image, Pressable, PressableProps} from 'react-native';
 import {Badge, Header} from '../index';
 import styles from './singleDonationItem.styles';
 
-interface SingleDonationItemProps {
+interface SingleDonationItemProps extends PressableProps {
   uri: string;
   badgeTitle: string;
   donationTitle: string;
@@ -15,9 +15,10 @@ const SingleDonationItem: FC<SingleDonationItemProps> = ({
   badgeTitle,
   donationTitle,
   price,
+  ...rest
 }) => {
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} {...rest}>
       <View style={styles.imgWrapper}>
         <Image
           source={{uri: uri}}
@@ -35,13 +36,14 @@ const SingleDonationItem: FC<SingleDonationItemProps> = ({
         size={'sm'}
         text={donationTitle}
         customStyle={styles.headerGreen}
+        numberOfLines={1}
       />
       <Header
         size={'sm'}
         text={'$' + price.toFixed(2)}
         customStyle={styles.headerBlue}
       />
-    </View>
+    </Pressable>
   );
 };
 

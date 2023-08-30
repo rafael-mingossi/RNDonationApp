@@ -7,13 +7,13 @@ import {
 
 const styles = StyleSheet.create({
   container: {
-    width: horizontalScale(145),
+    width: horizontalScale(142),
     justifyContent: 'flex-start',
     marginBottom: 15,
   },
   imgWrapper: {
     height: verticalScale(160),
-    width: horizontalScale(145),
+    width: horizontalScale(142),
     marginBottom: verticalScale(10),
   },
   image: {

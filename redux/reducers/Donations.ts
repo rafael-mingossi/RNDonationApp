@@ -1,6 +1,19 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-const initialState = {
+type State = {
+  items: {
+    name: string;
+    description: string;
+    image: string;
+    donationItemId: number;
+    categoryIds: number[];
+    price: string;
+  }[];
+  selectedDonationId: null;
+  selectedDonationData: {} | undefined;
+};
+
+const initialState: State = {
   items: [
     {
       name: 'Solar-powered lantern',
@@ -204,6 +217,7 @@ const initialState = {
     },
   ],
   selectedDonationId: null,
+  selectedDonationData: {},
 };
 const Donations = createSlice({
   name: 'donations',
@@ -214,6 +228,9 @@ const Donations = createSlice({
     },
     updateSelectedDonationId: (state, action) => {
       state.selectedDonationId = action.payload;
+      state.selectedDonationData = state.items.find(
+        item => item.donationItemId === action.payload,
+      );
     },
   },
 });

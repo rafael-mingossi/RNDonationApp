@@ -4,5 +4,6 @@ import Tab from './Tab/Tab';
 import Badge from './Badge/Badge';
 import Search from './Search/Search';
 import SingleDonationItem from './SingleDonationItem/SingleDonationItem';
+import BackArrow from './BackArrow/BackArrow';
 
-export {Button, Header, Tab, Badge, Search, SingleDonationItem};
+export {Button, Header, Tab, Badge, Search, SingleDonationItem, BackArrow};

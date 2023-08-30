@@ -6,7 +6,7 @@ import styles from './badge.styles';
 interface BadgeProps {
   sizeBtn: 'sm' | 'md';
   sizeTxt: 'sm' | 'md';
-  text: string;
+  text: string | undefined;
   customStyle?: ViewStyle;
 }
 

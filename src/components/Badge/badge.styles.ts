@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: 'white',
   },
-  sm: {height: verticalScale(22)},
-  md: {height: verticalScale(27)},
+  sm: {paddingVertical: verticalScale(5)},
+  md: {paddingVertical: verticalScale(5)},
   smTxt: {fontSize: scaleFontSize(10)},
   mdTxt: {fontSize: scaleFontSize(14)},
 });

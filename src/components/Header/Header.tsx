@@ -1,13 +1,13 @@
 import React, {FC} from 'react';
-import {Text, TextStyle, View, ViewStyle} from 'react-native';
+import {Text, TextStyle, View, ViewStyle, TextProps} from 'react-native';
 import styles from './header.styles';
 
-interface HeaderProps {
+interface HeaderProps extends TextProps {
   size: 'sm' | 'md' | 'lg';
-  text: string | number;
+  text: string | number | undefined;
   customStyle?: ViewStyle | TextStyle;
 }
-const Header: FC<HeaderProps> = ({size, text, customStyle}) => {
+const Header: FC<HeaderProps> = ({size, text, customStyle, ...rest}) => {
   const sizes = {
     sm: styles.sm,
     md: styles.md,
@@ -16,7 +16,9 @@ const Header: FC<HeaderProps> = ({size, text, customStyle}) => {
 
   return (
     <View>
-      <Text style={[styles.title, sizes[size], customStyle]}>{text}</Text>
+      <Text style={[styles.title, sizes[size], customStyle]} {...rest}>
+        {text}
+      </Text>
     </View>
   );
 };

@@ -11,8 +11,11 @@ import {
 import {Header, Tab, Search, SingleDonationItem} from '../../components';
 import styles from './home.styles';
 import globalStyles from '../../../assets/styles/globalStyles';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../../../redux/store';
+import {updateSelectedDonationId} from '../../../redux/reducers/Donations';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {StackNavigatorParams} from '../../config/Navigator';
 
 type DonationsType = {
   name: string;
@@ -23,22 +26,40 @@ type DonationsType = {
   price: string;
 };
 
-const Home: FC = () => {
+type HomeProps = {
+  navigation: NativeStackNavigationProp<StackNavigatorParams, 'Home'>;
+};
+
+const Home: FC<HomeProps> = ({navigation}) => {
   const user = useSelector((state: RootState) => state.user);
   const cat = useSelector((state: RootState) => state.categories);
   const donations = useSelector((state: RootState) => state.donations);
+  const dispatch = useDispatch();
 
   const [donationItems, setDonationItems] = useState<DonationsType[]>([]);
+  const getCategory = (): string => {
+    if (cat.selectedCategoryId) {
+      return cat.categories.filter(
+        res => res.categoryId === cat.selectedCategoryId,
+      )[0].name;
+    } else {
+      return 'Category';
+    }
+  };
 
   useEffect(() => {
-    const items = donations.items.filter(val => {
-      return (
-        cat.selectedCategoryId &&
-        val.categoryIds.includes(cat.selectedCategoryId)
-      );
-    });
-    setDonationItems(items);
-  }, [cat.selectedCategoryId]);
+    if (cat.selectedCategoryId) {
+      const items = donations.items.filter(val => {
+        return (
+          cat.selectedCategoryId &&
+          val.categoryIds.includes(cat.selectedCategoryId)
+        );
+      });
+      setDonationItems(items);
+    } else {
+      setDonationItems(donations.items);
+    }
+  }, [cat.selectedCategoryId, donations]);
 
   return (
     <SafeAreaView style={[globalStyles.backgroundWhite, globalStyles.flex]}>
@@ -81,18 +102,29 @@ const Home: FC = () => {
         {/*/>*/}
         {donationItems.length > 0 && (
           <View style={styles.singleDonationWrapper}>
-            {donationItems.map(val => (
-              <SingleDonationItem
-                uri={val.image}
-                badgeTitle={
-                  cat.categories.filter(
-                    res => res.categoryId === cat.selectedCategoryId,
-                  )[0].name
-                }
-                donationTitle={val.name}
-                price={parseFloat(val.price)}
-              />
-            ))}
+            {donationItems.map(val => {
+              const categoryInfo = cat.categories.find(
+                res => res.categoryId === cat.selectedCategoryId,
+              );
+
+              return (
+                <View key={val.price}>
+                  <SingleDonationItem
+                    onPress={() => {
+                      dispatch(updateSelectedDonationId(val));
+                      navigation.navigate('SingleDonation', {
+                        val,
+                        categoryInfo,
+                      });
+                    }}
+                    uri={val.image}
+                    badgeTitle={getCategory()}
+                    donationTitle={val.name}
+                    price={parseFloat(val.price)}
+                  />
+                </View>
+              );
+            })}
           </View>
         )}
       </ScrollView>
