@@ -17,12 +17,18 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter',
     fontSize: scaleFontSize(14),
     color: 'black',
+    fontWeight: '400',
     lineHeight: scaleFontSize(22),
     marginLeft: horizontalScale(5),
+    marginBottom: verticalScale(15),
   },
   header: {
     marginTop: verticalScale(15),
     marginBottom: verticalScale(10),
+  },
+  btn: {
+    paddingHorizontal: horizontalScale(20),
+    paddingVertical: verticalScale(20),
   },
 });
 

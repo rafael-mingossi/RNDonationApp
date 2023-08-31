@@ -43,7 +43,7 @@ const Home: FC<HomeProps> = ({navigation}) => {
         res => res.categoryId === cat.selectedCategoryId,
       )[0].name;
     } else {
-      return 'Category';
+      return 'Cat';
     }
   };
 
@@ -56,8 +56,6 @@ const Home: FC<HomeProps> = ({navigation}) => {
         );
       });
       setDonationItems(items);
-    } else {
-      setDonationItems(donations.items);
     }
   }, [cat.selectedCategoryId, donations]);
 
@@ -94,13 +92,8 @@ const Home: FC<HomeProps> = ({navigation}) => {
           />
         </Pressable>
         <Tab />
-        {/*<Button*/}
-        {/*  onPress={() => Alert.alert('d')}*/}
-        {/*  sizeBtn={'lg'}*/}
-        {/*  sizeTxt={'lg'}*/}
-        {/*  text={'Donate'}*/}
-        {/*/>*/}
-        {donationItems.length > 0 && (
+
+        {donationItems.length && cat.selectedCategoryId ? (
           <View style={styles.singleDonationWrapper}>
             {donationItems.map(val => {
               const categoryInfo = cat.categories.find(
@@ -125,6 +118,10 @@ const Home: FC<HomeProps> = ({navigation}) => {
                 </View>
               );
             })}
+          </View>
+        ) : (
+          <View>
+            <Text>Select a Category to Display the Items!</Text>
           </View>
         )}
       </ScrollView>

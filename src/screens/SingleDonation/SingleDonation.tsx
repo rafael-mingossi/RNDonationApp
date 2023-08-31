@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
-import {ScrollView, SafeAreaView, Image, Text, View} from 'react-native';
+import {ScrollView, SafeAreaView, Image, Text, View, Alert} from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {BackArrow, Badge, Header} from '../../components';
+import {BackArrow, Badge, Button, Header} from '../../components';
 import globalStyles from '../../../assets/styles/globalStyles';
 import styles from './singleDonation.styles';
 import {StackNavigatorParams} from '../../config/Navigator';
@@ -13,8 +13,6 @@ interface SingleDonationProps {
 }
 
 const SingleDonation: FC<SingleDonationProps> = ({navigation, route}) => {
-  console.log('X ==>>', route?.params);
-
   return (
     <SafeAreaView style={[globalStyles.backgroundWhite, globalStyles.flex]}>
       <ScrollView
@@ -34,6 +32,14 @@ const SingleDonation: FC<SingleDonationProps> = ({navigation, route}) => {
           {route?.params?.val?.description}
         </Text>
       </ScrollView>
+      <View style={styles.btn}>
+        <Button
+          onPress={() => Alert.alert('d')}
+          sizeBtn={'lg'}
+          sizeTxt={'lg'}
+          text={'Donate'}
+        />
+      </View>
     </SafeAreaView>
   );
 };

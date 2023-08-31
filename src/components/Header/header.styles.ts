@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: 'Inter',
     fontWeight: '600',
+    color: 'black',
   },
   sm: {
     fontSize: scaleFontSize(16),
