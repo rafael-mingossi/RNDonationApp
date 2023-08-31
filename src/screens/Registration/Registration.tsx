@@ -1,12 +1,5 @@
 import React, {FC, useRef} from 'react';
-import {
-  Alert,
-  Pressable,
-  SafeAreaView,
-  Text,
-  View,
-  TextInput,
-} from 'react-native';
+import {Alert, SafeAreaView, View, TextInput} from 'react-native';
 import {BackArrow, Button, Header, Input} from '../../components';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {StackNavigatorParams} from '../../config/Navigator';
