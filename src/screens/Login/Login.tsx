@@ -1,4 +1,4 @@
-import React, {FC, useRef} from 'react';
+import React, {FC, useRef, useState} from 'react';
 import {
   Alert,
   Image,
@@ -21,6 +21,9 @@ type LoginProps = {
 const Login: FC<LoginProps> = ({navigation}) => {
   const passwordRef = useRef<TextInput | null>(null);
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   return (
     <SafeAreaView style={[globalStyles.flex]}>
       <View
@@ -39,7 +42,7 @@ const Login: FC<LoginProps> = ({navigation}) => {
           placeholder={'name@email.co'}
           keyboardType={'email-address'}
           returnKeyType={'next'}
-          // onChangeText={res => console.log(res)}
+          onChangeText={res => setEmail(res)}
           onSubmitEditing={() => passwordRef.current?.focus()}
         />
         <Input
@@ -47,7 +50,7 @@ const Login: FC<LoginProps> = ({navigation}) => {
           label={'Password'}
           placeholder={'*****'}
           secureTextEntry
-          // onChangeText={res => console.log(res)}
+          onChangeText={res => setPassword(res)}
         />
         <View style={styles.btn}>
           <Button
