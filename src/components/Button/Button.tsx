@@ -1,5 +1,5 @@
 import React, {FC, useRef, useState} from 'react';
-import {Pressable, Text, PressableProps} from 'react-native';
+import {Pressable, Text, PressableProps, ActivityIndicator} from 'react-native';
 import styles from './button.styles';
 import {horizontalScale} from '../../utils/scalling';
 
@@ -10,6 +10,7 @@ interface ButtonProps extends PressableProps {
   isDisabled?: boolean;
   isActive?: boolean;
   smallWidth?: boolean;
+  isLoading?: boolean;
 }
 
 const defaultProps = {
@@ -19,10 +20,12 @@ const defaultProps = {
   isDisabled: false,
   isActive: true,
   smallWidth: false,
+  isLoading: false,
 };
 
 const Button: FC<ButtonProps> = props => {
   const [width, setWidth] = useState(0);
+
   const txtRef = useRef(null);
   const paddingHorizontal = 33;
   //THIS WILL GRAB THE ACTUAL TEXT BTN WIDTH
@@ -33,8 +36,16 @@ const Button: FC<ButtonProps> = props => {
     ...props,
   };
 
-  const {sizeBtn, sizeTxt, text, isDisabled, isActive, smallWidth, ...rest} =
-    propsWithDefault;
+  const {
+    sizeBtn,
+    sizeTxt,
+    text,
+    isDisabled,
+    isActive,
+    smallWidth,
+    isLoading,
+    ...rest
+  } = propsWithDefault;
 
   const btnSizes = {
     sm: styles.sm,
@@ -59,14 +70,22 @@ const Button: FC<ButtonProps> = props => {
         smallWidth && btnWidth,
       ]}
       disabled={isDisabled || false}>
-      <Text
-        onTextLayout={event => {
-          setWidth(event.nativeEvent.lines[0].width);
-        }}
-        ref={txtRef}
-        style={[styles.text, txtSizes[sizeTxt], isActive && styles.activeTxt]}>
-        {text || 'Default'}
-      </Text>
+      {isLoading ? (
+        <ActivityIndicator size={'small'} color={'white'} />
+      ) : (
+        <Text
+          onTextLayout={event => {
+            setWidth(event.nativeEvent.lines[0].width);
+          }}
+          ref={txtRef}
+          style={[
+            styles.text,
+            txtSizes[sizeTxt],
+            isActive && styles.activeTxt,
+          ]}>
+          {text || 'Default'}
+        </Text>
+      )}
     </Pressable>
   );
 };

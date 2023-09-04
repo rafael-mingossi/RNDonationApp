@@ -1,6 +1,5 @@
-import React, {FC, useRef, useState} from 'react';
+import React, {FC, useEffect, useRef, useState} from 'react';
 import {
-  Alert,
   Image,
   Pressable,
   SafeAreaView,
@@ -11,6 +10,7 @@ import {
 import {Button, Input} from '../../components';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {StackNavigatorParams} from '../../config/Navigator';
+import useLogInUser from '../../../api/useLogInUser';
 import globalStyles from '../../../assets/styles/globalStyles';
 import styles from './login.styles';
 
@@ -20,9 +20,29 @@ type LoginProps = {
 
 const Login: FC<LoginProps> = ({navigation}) => {
   const passwordRef = useRef<TextInput | null>(null);
+  const {
+    setErrorSignIn,
+    isLoginLoading,
+    loginRes,
+    successSignIn,
+    errorSignIn,
+    status,
+    loginUser,
+  } = useLogInUser();
+  console.log('TOKEN ==>>', loginRes);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    if (status) {
+      navigation.navigate('Home');
+    }
+  }, [status]);
+
+  useEffect(() => {
+    setErrorSignIn('');
+  }, [email, password]);
 
   return (
     <SafeAreaView style={[globalStyles.flex]}>
@@ -52,9 +72,17 @@ const Login: FC<LoginProps> = ({navigation}) => {
           secureTextEntry
           onChangeText={res => setPassword(res)}
         />
+        {successSignIn.length > 0 && (
+          <Text style={styles.status}>{successSignIn}</Text>
+        )}
+        {errorSignIn.length > 0 && (
+          <Text style={styles.error}>{errorSignIn}</Text>
+        )}
         <View style={styles.btn}>
           <Button
-            onPress={() => Alert.alert('d')}
+            onPress={async () => await loginUser({email, password})}
+            isDisabled={email.length <= 4 || password.length <= 4}
+            isLoading={isLoginLoading}
             sizeBtn={'md'}
             sizeTxt={'lg'}
             text={'Login'}

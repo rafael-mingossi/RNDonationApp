@@ -26,6 +26,20 @@ const styles = StyleSheet.create({
     width: horizontalScale(190),
     resizeMode: 'contain',
   },
+  status: {
+    textAlign: 'center',
+    fontFamily: 'Inter',
+    fontSize: scaleFontSize(16),
+    color: 'green',
+    marginBottom: verticalScale(15),
+  },
+  error: {
+    textAlign: 'center',
+    fontFamily: 'Inter',
+    fontSize: scaleFontSize(16),
+    color: 'red',
+    marginBottom: verticalScale(15),
+  },
 });
 
 export default styles;

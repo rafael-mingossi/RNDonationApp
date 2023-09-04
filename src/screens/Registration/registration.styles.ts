@@ -1,5 +1,9 @@
 import {StyleSheet} from 'react-native';
-import {horizontalScale, verticalScale} from '../../utils/scalling';
+import {
+  horizontalScale,
+  scaleFontSize,
+  verticalScale,
+} from '../../utils/scalling';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,6 +23,20 @@ const styles = StyleSheet.create({
   backBtn: {
     paddingHorizontal: horizontalScale(10),
     paddingVertical: verticalScale(10),
+  },
+  status: {
+    textAlign: 'center',
+    fontFamily: 'Inter',
+    fontSize: scaleFontSize(16),
+    color: 'green',
+    marginBottom: verticalScale(15),
+  },
+  error: {
+    textAlign: 'center',
+    fontFamily: 'Inter',
+    fontSize: scaleFontSize(16),
+    color: 'red',
+    marginBottom: verticalScale(15),
   },
 });
 
