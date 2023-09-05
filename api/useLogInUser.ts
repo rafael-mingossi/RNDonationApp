@@ -1,7 +1,7 @@
 import auth from '@react-native-firebase/auth';
 import {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {logIn} from '../redux/reducers/User';
+import {logIn, updateToken} from '../redux/reducers/User';
 
 type LoginProps = {
   email: string;
@@ -21,6 +21,7 @@ const useLogInUser = () => {
       console.log('HOOK ==>>', res);
       setToken(await res.user.getIdToken());
       dispatch(logIn(res));
+      dispatch(updateToken(await res.user.getIdToken()));
       setErrorSignIn('');
       setStatus(true);
       setIsLoginLoading(false);

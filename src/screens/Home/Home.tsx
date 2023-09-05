@@ -61,7 +61,7 @@ const Home: FC<HomeProps> = ({navigation}) => {
     }
   }, [cat.selectedCategoryId, donations]);
 
-  // console.log('USER HOME ==>>>', user);
+  console.log('USER HOME ==>>>', user);
 
   return (
     <SafeAreaView style={[globalStyles.backgroundWhite, globalStyles.flex]}>
