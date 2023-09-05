@@ -20,25 +20,11 @@ type LoginProps = {
 
 const Login: FC<LoginProps> = ({navigation}) => {
   const passwordRef = useRef<TextInput | null>(null);
-  const {
-    setErrorSignIn,
-    isLoginLoading,
-    loginRes,
-    successSignIn,
-    errorSignIn,
-    status,
-    loginUser,
-  } = useLogInUser();
-  console.log('TOKEN ==>>', loginRes);
+  const {setErrorSignIn, isLoginLoading, errorSignIn, loginUser} =
+    useLogInUser();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  useEffect(() => {
-    if (status) {
-      navigation.navigate('Home');
-    }
-  }, [status]);
 
   useEffect(() => {
     setErrorSignIn('');
@@ -72,9 +58,7 @@ const Login: FC<LoginProps> = ({navigation}) => {
           secureTextEntry
           onChangeText={res => setPassword(res)}
         />
-        {successSignIn.length > 0 && (
-          <Text style={styles.status}>{successSignIn}</Text>
-        )}
+
         {errorSignIn.length > 0 && (
           <Text style={styles.error}>{errorSignIn}</Text>
         )}

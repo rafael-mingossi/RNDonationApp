@@ -16,6 +16,7 @@ import {RootState} from '../../../redux/store';
 import {updateSelectedDonationId} from '../../../redux/reducers/Donations';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {StackNavigatorParams} from '../../config/Navigator';
+import useLogOutUser from '../../../api/useLogOutUser';
 
 type DonationsType = {
   name: string;
@@ -36,6 +37,7 @@ const Home: FC<HomeProps> = ({navigation}) => {
   const donations = useSelector((state: RootState) => state.donations);
   const dispatch = useDispatch();
 
+  const {logOut} = useLogOutUser();
   const [donationItems, setDonationItems] = useState<DonationsType[]>([]);
   const getCategory = (): string => {
     if (cat.selectedCategoryId) {
@@ -59,6 +61,8 @@ const Home: FC<HomeProps> = ({navigation}) => {
     }
   }, [cat.selectedCategoryId, donations]);
 
+  // console.log('USER HOME ==>>>', user);
+
   return (
     <SafeAreaView style={[globalStyles.backgroundWhite, globalStyles.flex]}>
       <ScrollView style={[globalStyles.paddings, globalStyles.flex]}>
@@ -67,18 +71,20 @@ const Home: FC<HomeProps> = ({navigation}) => {
             <Text style={styles.hello}>Hello,</Text>
             <Header
               size={'lg'}
-              text={
-                user
-                  ? user.firstName + ' ' + user.lastName + '👋'
-                  : 'Stranger' + '👋'
-              }
+              text={user ? user?.user?.displayName + '👋' : 'Stranger' + '👋'}
             />
           </View>
-          <Image
-            source={{uri: user.profileImage}}
-            // source={require('../../../assets/images/headerIcon.png')}
-            style={styles.headerImage}
-          />
+          <Pressable
+            onPress={() => {
+              logOut();
+              // navigation.navigate('Login');
+            }}>
+            <Image
+              source={{uri: user.profileImage}}
+              // source={require('../../../assets/images/headerIcon.png')}
+              style={styles.headerImage}
+            />
+          </Pressable>
         </View>
         <View style={styles.searchContainer}>
           <Search onSearch={val => console.log(val)} />

@@ -1,9 +1,30 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-const initialState = {
-  firstName: 'Rafa',
-  lastName: 'Ming',
-  userId: 1,
+// type UserData = {
+//   displayName: string;
+//   email: string;
+//   emailVerified: boolean;
+//   isAnonymous: boolean;
+//   metadata: {};
+//   multiFactor: {};
+//   phoneNumber: string;
+//   photoURL: string;
+//   providerData: Array<{}>;
+//   providerId: string;
+//   refreshToken: string;
+//   tenantId: string;
+//   uid: string;
+// };
+
+type UsersType = {
+  user: any;
+  isLoggedIn: boolean;
+  profileImage: string;
+};
+
+const initialState: UsersType = {
+  user: {},
+  isLoggedIn: false,
   profileImage:
     'https://cdn.dribbble.com/users/1577045/screenshots/4914645/media/028d394ffb00cb7a4b2ef9915a384fd9.png?compress=1&resize=400x300&vertical=top',
 };
@@ -12,8 +33,8 @@ export const User = createSlice({
   name: 'user',
   initialState: initialState,
   reducers: {
-    updateFirstName: (state, action) => {
-      state.firstName = action.payload.firstName;
+    logIn: (state, action) => {
+      return {...state, ...{isLoggedIn: true}, ...action.payload};
     },
     resetToInitialState: () => {
       return initialState;
@@ -21,7 +42,7 @@ export const User = createSlice({
   },
 });
 
-export const {updateFirstName, resetToInitialState} = User.actions;
+export const {logIn, resetToInitialState} = User.actions;
 export default User.reducer;
 
 // REDUCER =>> is a function that updates the state in response to an action
