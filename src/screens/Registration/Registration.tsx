@@ -25,7 +25,11 @@ const Registration: FC<LoginProps> = ({navigation}) => {
 
   return (
     <SafeAreaView style={[globalStyles.flex, globalStyles.backgroundWhite]}>
-      <ScrollView style={[globalStyles.flex, globalStyles.backgroundWhite]}>
+      <ScrollView
+        contentContainerStyle={[
+          globalStyles.flex,
+          globalStyles.backgroundWhite,
+        ]}>
         <View style={styles.backBtn}>
           <BackArrow onPress={() => navigation.goBack()} />
         </View>

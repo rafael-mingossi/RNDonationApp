@@ -16,7 +16,7 @@ const SingleDonation: FC<SingleDonationProps> = ({navigation, route}) => {
   return (
     <SafeAreaView style={[globalStyles.backgroundWhite, globalStyles.flex]}>
       <ScrollView
-        style={[globalStyles.paddings, globalStyles.flex]}
+        contentContainerStyle={[globalStyles.paddings, globalStyles.flex]}
         showsVerticalScrollIndicator={false}>
         <BackArrow onPress={() => navigation.goBack()} />
         <Image source={{uri: route?.params?.val?.image}} style={styles.image} />
@@ -34,7 +34,7 @@ const SingleDonation: FC<SingleDonationProps> = ({navigation, route}) => {
       </ScrollView>
       <View style={styles.btn}>
         <Button
-          onPress={() => Alert.alert('d')}
+          onPress={() => navigation.navigate('Payment')}
           sizeBtn={'lg'}
           sizeTxt={'lg'}
           text={'Donate'}

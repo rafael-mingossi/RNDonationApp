@@ -65,7 +65,8 @@ const Home: FC<HomeProps> = ({navigation}) => {
 
   return (
     <SafeAreaView style={[globalStyles.backgroundWhite, globalStyles.flex]}>
-      <ScrollView style={[globalStyles.paddings, globalStyles.flex]}>
+      <ScrollView
+        contentContainerStyle={[globalStyles.paddings, globalStyles.flex]}>
         <View style={[styles.headerContainer]}>
           <View>
             <Text style={styles.hello}>Hello,</Text>
