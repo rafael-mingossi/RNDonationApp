@@ -28,6 +28,7 @@ const SingleDonation: FC<SingleDonationProps> = ({navigation, route}) => {
           sizeBtn={'md'}
           sizeTxt={'md'}
           text={route?.params?.categoryInfo?.name}
+          // customStyle={styles.bubble}
         />
         <View style={styles.header}>
           <Header size={'lg'} text={route?.params?.val?.name} />

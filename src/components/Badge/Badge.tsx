@@ -6,23 +6,25 @@ import styles from './badge.styles';
 interface BadgeProps {
   sizeBtn: 'sm' | 'md';
   sizeTxt: 'sm' | 'md';
-  text: string | undefined;
+  text?: string;
+  useInSmallCard?: boolean;
   customStyle?: ViewStyle;
 }
 
 const defaultProps = {
   sizeBtn: 'md',
   sizeTxt: 'md',
+  useInSmallCard: false,
   text: 'Default',
 };
 
 const Badge: FC<BadgeProps> = props => {
   const [width, setWidth] = useState(0);
   const txtRef = useRef(null);
-  const paddingHorizontal = 20;
-  const btnWidth = {width: horizontalScale(paddingHorizontal + width)};
-
-  console.log(width);
+  const paddingHorizontal = 10;
+  const btnWidth = {
+    width: horizontalScale(paddingHorizontal * 2 + width),
+  };
 
   const propsWithDefault = {
     ...defaultProps,
@@ -41,13 +43,19 @@ const Badge: FC<BadgeProps> = props => {
     md: styles.mdTxt,
   };
 
+  console.log(text?.length);
+
   return (
-    <View style={[styles.container, btnWidth, btnSizes[sizeBtn], customStyle]}>
+    <View style={[styles.container, btnSizes[sizeBtn], customStyle]}>
       <Text
         onTextLayout={event => setWidth(event.nativeEvent.lines[0].width)}
         style={[styles.text, txtSizes[sizeTxt]]}
         ref={txtRef}>
-        {text}
+        {props.useInSmallCard
+          ? text?.length > 21
+            ? text?.slice(0, 21) + '...'
+            : text
+          : text}
       </Text>
     </View>
   );

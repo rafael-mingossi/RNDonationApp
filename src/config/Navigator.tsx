@@ -9,7 +9,7 @@ import {AppState} from 'react-native';
 import useToken from '../../api/useToken';
 
 type DonationsType = {
-  name: string;
+  name?: string;
   description: string;
   image: string;
   donationItemId: number;

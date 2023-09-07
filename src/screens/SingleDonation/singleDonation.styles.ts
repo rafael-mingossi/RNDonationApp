@@ -30,6 +30,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: horizontalScale(20),
     paddingVertical: verticalScale(20),
   },
+  bubble: {
+    width: '100%',
+  },
 });
 
 export default styles;
