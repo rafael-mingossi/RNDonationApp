@@ -43,8 +43,6 @@ const Badge: FC<BadgeProps> = props => {
     md: styles.mdTxt,
   };
 
-  console.log(text?.length);
-
   return (
     <View style={[styles.container, btnSizes[sizeBtn], customStyle]}>
       <Text

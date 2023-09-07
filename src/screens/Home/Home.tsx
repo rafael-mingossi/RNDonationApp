@@ -87,7 +87,10 @@ const Home: FC<HomeProps> = ({navigation}) => {
           </Pressable>
         </View>
         <View style={styles.searchContainer}>
-          <Search onSearch={val => console.log(val)} />
+          <Search
+            onSearch={val => console.log(val)}
+            placeHolder={'Search by name'}
+          />
         </View>
         <Pressable
           style={styles.highlightContainer}
