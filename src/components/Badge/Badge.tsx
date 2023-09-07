@@ -19,8 +19,10 @@ const defaultProps = {
 const Badge: FC<BadgeProps> = props => {
   const [width, setWidth] = useState(0);
   const txtRef = useRef(null);
-  const paddingHorizontal = 10;
-  const btnWidth = {width: horizontalScale(paddingHorizontal * 2 + width)};
+  const paddingHorizontal = 20;
+  const btnWidth = {width: horizontalScale(paddingHorizontal + width)};
+
+  console.log(width);
 
   const propsWithDefault = {
     ...defaultProps,

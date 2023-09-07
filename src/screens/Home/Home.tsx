@@ -61,12 +61,11 @@ const Home: FC<HomeProps> = ({navigation}) => {
     }
   }, [cat.selectedCategoryId, donations]);
 
-  console.log('USER HOME ==>>>', user);
+  // console.log('USER HOME ==>>>', user);
 
   return (
     <SafeAreaView style={[globalStyles.backgroundWhite, globalStyles.flex]}>
-      <ScrollView
-        contentContainerStyle={[globalStyles.paddings, globalStyles.flex]}>
+      <ScrollView style={[globalStyles.paddings, globalStyles.flex]}>
         <View style={[styles.headerContainer]}>
           <View>
             <Text style={styles.hello}>Hello,</Text>

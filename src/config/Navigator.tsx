@@ -25,7 +25,7 @@ export type StackNavigatorParams = {
   };
   Login: undefined;
   Registration: undefined;
-  Payment: undefined;
+  Payment: {price: string};
 };
 
 const Stack = createStackNavigator<StackNavigatorParams>();

@@ -1,10 +1,21 @@
 import {StyleSheet} from 'react-native';
-import {horizontalScale, verticalScale} from '../../utils/scalling';
+import {
+  horizontalScale,
+  scaleFontSize,
+  verticalScale,
+} from '../../utils/scalling';
 
 const styles = StyleSheet.create({
   header: {
     marginTop: verticalScale(30),
-    marginBottom: verticalScale(40),
+    marginBottom: verticalScale(20),
+  },
+  text: {
+    marginTop: verticalScale(20),
+    marginBottom: verticalScale(20),
+    fontFamily: 'Inter',
+    fontSize: scaleFontSize(15),
+    fontWeight: '600',
   },
   dateCvv: {
     flexDirection: 'row',
