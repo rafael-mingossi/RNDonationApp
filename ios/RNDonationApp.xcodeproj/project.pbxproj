@@ -14,6 +14,7 @@
 		1C5658D6FBE14315BF98FB1A /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D080AD3F070D4162BAF4D606 /* Inter-Regular.ttf */; };
 		2AFF079DB5994017B62FC51D /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1D53C7DFEC646368FFB9857 /* Inter-Light.ttf */; };
 		4E294B3E17BF6EE1FC2E56E2 /* Pods_RNDonationApp_RNDonationAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142BF14B42F85308E9FE8C46 /* Pods_RNDonationApp_RNDonationAppTests.framework */; };
+		5354B56E2AAA7AB6005D25D7 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5354B56D2AAA7AB6005D25D7 /* BootSplash.storyboard */; };
 		53C6E8752AA173C600FB0EED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53C6E8742AA173C500FB0EED /* GoogleService-Info.plist */; };
 		8189086D23014993AAAEF37C /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E01267FD3CD94E929E222931 /* Inter-Medium.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -50,6 +51,7 @@
 		142BF14B42F85308E9FE8C46 /* Pods_RNDonationApp_RNDonationAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RNDonationApp_RNDonationAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FCB98650D3642E4B4E8F16F /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraLight.ttf"; path = "../assets/fonts/Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-RNDonationApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNDonationApp.debug.xcconfig"; path = "Target Support Files/Pods-RNDonationApp/Pods-RNDonationApp.debug.xcconfig"; sourceTree = "<group>"; };
+		5354B56D2AAA7AB6005D25D7 /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = RNDonationApp/BootSplash.storyboard; sourceTree = "<group>"; };
 		53C6E8742AA173C500FB0EED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-RNDonationApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNDonationApp.release.xcconfig"; path = "Target Support Files/Pods-RNDonationApp/Pods-RNDonationApp.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-RNDonationApp-RNDonationAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNDonationApp-RNDonationAppTests.debug.xcconfig"; path = "Target Support Files/Pods-RNDonationApp-RNDonationAppTests/Pods-RNDonationApp-RNDonationAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
+				5354B56D2AAA7AB6005D25D7 /* BootSplash.storyboard */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
@@ -283,6 +286,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				5354B56E2AAA7AB6005D25D7 /* BootSplash.storyboard in Resources */,
 				86627F11BBB745BEB127ED3A /* Inter-Black.ttf in Resources */,
 				9CAD3A53E6CF46DE9DEEACB0 /* Inter-Bold.ttf in Resources */,
 				FE1ADAFD1F214CDCA1EF35E6 /* Inter-ExtraBold.ttf in Resources */,
