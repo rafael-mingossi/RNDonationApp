@@ -75,6 +75,10 @@ const Registration: FC<LoginProps> = ({navigation}) => {
                   fullName,
                   email,
                   password,
+                }).then(res => {
+                  if (res) {
+                    navigation.navigate('Login');
+                  }
                 });
               }}
               sizeBtn={'md'}
