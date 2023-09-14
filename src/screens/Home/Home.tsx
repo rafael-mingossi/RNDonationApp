@@ -61,7 +61,7 @@ const Home: FC<HomeProps> = ({navigation}) => {
     }
   }, [cat.selectedCategoryId, donations]);
 
-  console.log('USER HOME ==>>>', user);
+  // console.log('USER HOME ==>>>', user);
 
   return (
     <SafeAreaView style={[globalStyles.backgroundWhite, globalStyles.flex]}>
@@ -87,7 +87,10 @@ const Home: FC<HomeProps> = ({navigation}) => {
           </Pressable>
         </View>
         <View style={styles.searchContainer}>
-          <Search onSearch={val => console.log(val)} />
+          <Search
+            onSearch={val => console.log(val)}
+            placeHolder={'Search by name'}
+          />
         </View>
         <Pressable
           style={styles.highlightContainer}

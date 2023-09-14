@@ -2,14 +2,14 @@ import React, {useEffect, useRef} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
 ////SCREENS
-import {Home, SingleDonation, Login, Registration} from '../screens';
+import {Home, SingleDonation, Login, Registration, Payment} from '../screens';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../redux/store';
 import {AppState} from 'react-native';
 import useToken from '../../api/useToken';
 
 type DonationsType = {
-  name: string;
+  name?: string;
   description: string;
   image: string;
   donationItemId: number;
@@ -25,6 +25,7 @@ export type StackNavigatorParams = {
   };
   Login: undefined;
   Registration: undefined;
+  Payment: {price: string};
 };
 
 const Stack = createStackNavigator<StackNavigatorParams>();
@@ -64,6 +65,7 @@ const Navigator = () => {
         <>
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="SingleDonation" component={SingleDonation} />
+          <Stack.Screen name="Payment" component={Payment} />
         </>
       ) : (
         <>

@@ -1,4 +1,4 @@
-package com.rndonationapp;
+package com.donationapprming;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

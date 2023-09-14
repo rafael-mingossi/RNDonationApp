@@ -9,8 +9,10 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#145855',
     borderRadius: horizontalScale(100),
+    alignSelf: 'flex-start',
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: horizontalScale(8),
   },
   text: {
     fontFamily: 'Inter',

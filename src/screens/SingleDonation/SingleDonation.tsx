@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import {ScrollView, SafeAreaView, Image, Text, View, Alert} from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {BackArrow, Badge, Button, Header} from '../../components';
@@ -13,6 +13,10 @@ interface SingleDonationProps {
 }
 
 const SingleDonation: FC<SingleDonationProps> = ({navigation, route}) => {
+  let price: string;
+  if (route.params) {
+    price = route.params.val.price;
+  }
   return (
     <SafeAreaView style={[globalStyles.backgroundWhite, globalStyles.flex]}>
       <ScrollView
@@ -24,6 +28,7 @@ const SingleDonation: FC<SingleDonationProps> = ({navigation, route}) => {
           sizeBtn={'md'}
           sizeTxt={'md'}
           text={route?.params?.categoryInfo?.name}
+          // customStyle={styles.bubble}
         />
         <View style={styles.header}>
           <Header size={'lg'} text={route?.params?.val?.name} />
@@ -34,7 +39,7 @@ const SingleDonation: FC<SingleDonationProps> = ({navigation, route}) => {
       </ScrollView>
       <View style={styles.btn}>
         <Button
-          onPress={() => Alert.alert('d')}
+          onPress={() => navigation.navigate('Payment', {price})}
           sizeBtn={'lg'}
           sizeTxt={'lg'}
           text={'Donate'}

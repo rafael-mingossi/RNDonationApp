@@ -29,6 +29,7 @@ const SingleDonationItem: FC<SingleDonationItemProps> = ({
           sizeBtn={'sm'}
           sizeTxt={'sm'}
           text={badgeTitle}
+          useInSmallCard={true}
           customStyle={styles.badgeStyles}
         />
       </View>
