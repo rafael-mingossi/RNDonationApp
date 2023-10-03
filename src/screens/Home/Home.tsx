@@ -8,7 +8,13 @@ import {
   ScrollView,
   Alert,
 } from 'react-native';
-import {Header, Tab, Search, SingleDonationItem} from '../../components';
+import {
+  Header,
+  Tab,
+  Search,
+  SingleDonationItem,
+  Wrapper,
+} from '../../components';
 import styles from './home.styles';
 import globalStyles from '../../../assets/styles/globalStyles';
 import {useDispatch, useSelector} from 'react-redux';
@@ -64,77 +70,75 @@ const Home: FC<HomeProps> = ({navigation}) => {
   // console.log('USER HOME ==>>>', user);
 
   return (
-    <SafeAreaView style={[globalStyles.backgroundWhite, globalStyles.flex]}>
-      <ScrollView style={[globalStyles.paddings, globalStyles.flex]}>
-        <View style={[styles.headerContainer]}>
-          <View>
-            <Text style={styles.hello}>Hello,</Text>
-            <Header
-              size={'lg'}
-              text={user ? user?.user?.displayName + '👋' : 'Stranger' + '👋'}
-            />
-          </View>
-          <Pressable
-            onPress={() => {
-              logOut();
-              // navigation.navigate('Login');
-            }}>
-            <Image
-              source={{uri: user.profileImage}}
-              // source={require('../../../assets/images/headerIcon.png')}
-              style={styles.headerImage}
-            />
-          </Pressable>
-        </View>
-        <View style={styles.searchContainer}>
-          <Search
-            onSearch={val => console.log(val)}
-            placeHolder={'Search by name'}
+    <Wrapper>
+      <View style={[styles.headerContainer]}>
+        <View>
+          <Text style={styles.hello}>Hello,</Text>
+          <Header
+            size={'lg'}
+            text={user ? user?.user?.displayName + '👋' : 'Stranger' + '👋'}
           />
         </View>
         <Pressable
-          style={styles.highlightContainer}
-          onPress={() => Alert.alert('PRESS')}>
+          onPress={() => {
+            // logOut();
+            navigation.navigate('Profile');
+          }}>
           <Image
-            source={require('../../../assets/images/highlighted_image.png')}
-            style={styles.highlighted}
+            source={{uri: user.profileImage}}
+            // source={require('../../../assets/images/headerIcon.png')}
+            style={styles.headerImage}
           />
         </Pressable>
-        <Tab />
+      </View>
+      <View style={styles.searchContainer}>
+        <Search
+          onSearch={val => console.log(val)}
+          placeHolder={'Search by name'}
+        />
+      </View>
+      <Pressable
+        style={styles.highlightContainer}
+        onPress={() => Alert.alert('PRESS')}>
+        <Image
+          source={require('../../../assets/images/highlighted_image.png')}
+          style={styles.highlighted}
+        />
+      </Pressable>
+      <Tab />
 
-        {donationItems.length && cat.selectedCategoryId ? (
-          <View style={styles.singleDonationWrapper}>
-            {donationItems.map(val => {
-              const categoryInfo = cat.categories.find(
-                res => res.categoryId === cat.selectedCategoryId,
-              );
+      {donationItems.length && cat.selectedCategoryId ? (
+        <View style={styles.singleDonationWrapper}>
+          {donationItems.map(val => {
+            const categoryInfo = cat.categories.find(
+              res => res.categoryId === cat.selectedCategoryId,
+            );
 
-              return (
-                <View key={val.price}>
-                  <SingleDonationItem
-                    onPress={() => {
-                      dispatch(updateSelectedDonationId(val));
-                      navigation.navigate('SingleDonation', {
-                        val,
-                        categoryInfo,
-                      });
-                    }}
-                    uri={val.image}
-                    badgeTitle={getCategory()}
-                    donationTitle={val.name}
-                    price={parseFloat(val.price)}
-                  />
-                </View>
-              );
-            })}
-          </View>
-        ) : (
-          <View>
-            <Text>Select a Category to Display the Items!</Text>
-          </View>
-        )}
-      </ScrollView>
-    </SafeAreaView>
+            return (
+              <View key={val.price}>
+                <SingleDonationItem
+                  onPress={() => {
+                    dispatch(updateSelectedDonationId(val));
+                    navigation.navigate('SingleDonation', {
+                      val,
+                      categoryInfo,
+                    });
+                  }}
+                  uri={val.image}
+                  badgeTitle={getCategory()}
+                  donationTitle={val.name}
+                  price={parseFloat(val.price)}
+                />
+              </View>
+            );
+          })}
+        </View>
+      ) : (
+        <View>
+          <Text>Select a Category to Display the Items!</Text>
+        </View>
+      )}
+    </Wrapper>
   );
 };
 

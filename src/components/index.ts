@@ -6,6 +6,8 @@ import Search from './Search/Search';
 import SingleDonationItem from './SingleDonationItem/SingleDonationItem';
 import BackArrow from './BackArrow/BackArrow';
 import Input from './Input/Input';
+import CustomText from './CustomText/CustomText';
+import Wrapper from './Wrapper/Wrapper';
 
 export {
   Button,
@@ -16,4 +18,6 @@ export {
   SingleDonationItem,
   BackArrow,
   Input,
+  CustomText,
+  Wrapper,
 };
